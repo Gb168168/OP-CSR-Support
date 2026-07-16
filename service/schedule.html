@@ -1,1 +1,32 @@
-<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>排程表｜OP CSR Support</title><link rel="manifest" href="/OP-CSR-Support/manifest.json"><link rel="stylesheet" href="../assets/styles.css"></head><body><script src="../assets/local-storage-db.js"></script><script src="../assets/app.js"></script><script src="../assets/simple-crud.js"></script><script>initSimpleCrud('schedule')</script></body></html>
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+ <meta charset="utf-8" />
+ <meta name="viewport" content="width=device-width, initial-scale=1" />
+ <title>排程表｜OMNIPLAY 客服系統</title>
+ <link rel="stylesheet" href="../assets/styles.css" />
+ <link rel="manifest" href="/OP-CSR-Support/manifest.json" />
+ <meta name="theme-color" content="#3B82F6" />
+ <meta name="apple-mobile-web-app-capable" content="yes" />
+ <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+ <link rel="apple-touch-icon" href="assets/icon-192.png" />
+</head>
+<body>
+ <section class="app-shell" aria-label="客服系統主畫面">
+ <aside id="sidebar"></aside>
+ <div class="sidebar-overlay" id="sidebarOverlay" aria-hidden="true"></div>
+ <main class="main">
+ <header class="topbar"><div><h1>排程表</h1><p>客服值班與班表排程維護。</p></div><div class="user-pill">● 離線模式（localStorage）</div></header>
+ <section class="schedule-panel" aria-label="排程表月曆">
+ <div class="panel-heading schedule-heading"><div class="schedule-nav-left" aria-label="月份切換"><button class="secondary-button" id="prevSchedulePeriod" type="button">&lt; 上個月</button><div class="schedule-period-picker-wrap"><button class="schedule-period-label" id="schedulePeriodLabel" type="button" aria-haspopup="dialog" aria-expanded="false">—</button><div class="schedule-period-picker" id="schedulePeriodPicker" hidden><div class="period-picker-year"><button class="ghost-button" id="prevPickerYear" type="button" aria-label="上一年">‹</button><select id="scheduleYearSelect" aria-label="選擇年份"></select><button class="ghost-button" id="nextPickerYear" type="button" aria-label="下一年">›</button></div><div class="period-picker-months" id="scheduleMonthPicker" aria-label="選擇月份"></div></div></div><button class="secondary-button" id="nextSchedulePeriod" type="button">下個月 &gt;</button></div><div class="schedule-heading-actions"><div class="view-switch" aria-label="檢視切換"><button class="ghost-button" id="weekViewButton" type="button" data-view="week">週</button><button class="ghost-button is-active" id="monthViewButton" type="button" data-view="month">月</button><button class="ghost-button" id="yearViewButton" type="button" data-view="year">年</button></div><select class="schedule-filter-select" id="scheduleLabelFilter" aria-label="依標籤篩選排程"><option value="">全部標籤</option></select></div></div>
+ <div class="schedule-meta"><p class="schedule-status" id="scheduleStatus" data-type="info" hidden></p><strong id="selectedScheduleDate" hidden>—</strong></div>
+ <div class="calendar-grid" id="scheduleCalendar" aria-label="排程月曆"></div>
+ </section>
+ <div class="modal-backdrop" id="scheduleModal" aria-hidden="true"><section class="modal-card schedule-modal-card" role="dialog" aria-modal="true" aria-labelledby="scheduleModalTitle"><div class="modal-heading"><h2 id="scheduleModalTitle">新增排程</h2><button class="icon-button" id="closeScheduleModal" type="button" aria-label="關閉排程表單">✕</button></div><form class="schedule-form" id="scheduleForm"><div class="label-row"><label><span>標籤顏色</span><input id="scheduleLabelColor" type="color" value="#3b82f6" required /></label><label><span>標籤名稱</span><input id="scheduleLabelName" type="text" placeholder="例如：例會、活動、維護" /></label></div><div class="saved-labels" id="scheduleSavedLabels" aria-label="已設置標籤清單"></div><label><span>標題</span><input id="scheduleTitle" type="text" required autocomplete="off" /></label><label><span>內容</span><textarea id="scheduleContent" rows="4" placeholder="輸入排程內容"></textarea></label><label><span>提醒時間</span><input id="scheduleReminderAt" type="datetime-local" required /></label><div class="label-row repeat-row"><label><span>重複提醒</span><select id="scheduleRepeat"><option value="none">不重複</option><option value="daily">每天</option><option value="weekly">每週</option><option value="monthly">每月</option><option value="custom">自訂</option></select></label><label id="scheduleRepeatIntervalLabel" hidden><span>自訂間隔天數</span><input id="scheduleRepeatInterval" type="number" min="1" step="1" value="1" /></label></div><label><span>設置人員</span><select id="scheduleStaff" multiple size="6"></select><small>按住 Ctrl / Command 可多選人員。</small></label><section class="schedule-history" aria-label="設置歷程"><h3>設置歷程</h3><div id="scheduleHistoryList" class="schedule-history-list"></div></section><p class="form-message" id="scheduleFormMessage" hidden></p><div class="form-actions"><button class="danger-button" id="deleteScheduleButton" type="button">刪除</button><button class="ghost-button" id="cancelScheduleButton" type="button">取消</button><button class="primary-button" id="saveScheduleButton" type="submit">儲存</button></div></form></section></div>
+ </main>
+ </section>
+ <script src="../assets/local-storage-db.js"></script>
+ <script src="../assets/app.js"></script>
+ <script src="../assets/schedule.js"></script>
+</body>
+</html>
