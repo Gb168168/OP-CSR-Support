@@ -1,1 +1,53 @@
-<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>休假表｜OP CSR Support</title><link rel="manifest" href="/OP-CSR-Support/manifest.json"><link rel="stylesheet" href="../assets/styles.css"></head><body><script src="../assets/local-storage-db.js"></script><script src="../assets/app.js"></script><script src="../assets/simple-crud.js"></script><script>initSimpleCrud('leave')</script></body></html>
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+ <meta charset="utf-8" />
+ <meta name="viewport" content="width=device-width, initial-scale=1" />
+ <title>休假表｜OMNIPLAY 客服系統</title>
+ <link rel="stylesheet" href="../assets/styles.css" />
+ <link rel="manifest" href="/OP-CSR-Support/manifest.json" />
+ <meta name="theme-color" content="#3B82F6" />
+ <meta name="apple-mobile-web-app-capable" content="yes" />
+ <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+ <link rel="apple-touch-icon" href="assets/icon-192.png" />
+</head>
+<body>
+ <section class="app-shell" aria-label="客服系統主畫面">
+ <aside id="sidebar"></aside>
+ <div class="sidebar-overlay" id="sidebarOverlay" aria-hidden="true"></div>
+ <main class="main">
+ <header class="topbar">
+ <div>
+ <h1>休假表</h1>
+ <p>客服團隊休假資訊維護。</p>
+ </div>
+ <div class="user-pill">● 離線模式（localStorage）</div>
+ </header>
+ <section class="leave-panel" aria-label="休假表">
+ <div class="panel-heading leave-heading">
+ <div class="leave-toolbar" aria-label="月份切換與特殊標記">
+ <button class="secondary-button" id="prevLeaveMonth" type="button">← 上個月</button>
+ <strong id="leaveMonthLabel">—</strong>
+ <button class="secondary-button" id="nextLeaveMonth" type="button">下個月 →</button>
+ <button class="ghost-button" id="todayLeaveMonth" type="button">本月</button>
+ <label class="global-quota-field" for="globalLeaveQuota">可休：<input id="globalLeaveQuota" data-action="quota" type="number" min="0" max="31" step="1" value="8" aria-label="當月全員可休天數" /></label>
+ </div>
+ </div>
+ <div class="leave-meta">
+ <p id="leaveLegend" class="leave-legend"><span class="leave-marker">▲</span> 休假 <span class="leave-marker is-required">▲</span> 必休 <button class="leave-legend-button special-mode-button" id="phoneSpecialMode" type="button" data-special="phone" aria-pressed="false">📱值公務機</button> <button class="leave-legend-button special-mode-button" id="eventSpecialMode" type="button" data-special="event" aria-pressed="false">🎰公司活動</button></p>
+ <p class="leave-status" id="leaveStatus" data-type="info" hidden></p>
+ </div>
+ <div class="leave-table-wrap" aria-label="可左右滑動的休假表">
+ <table class="leave-table" id="leaveTable">
+ <thead id="leaveTableHead"></thead>
+ <tbody id="leaveTableBody"></tbody>
+ </table>
+ </div>
+ </section>
+ </main>
+ </section>
+ <script src="../assets/local-storage-db.js"></script>
+ <script src="../assets/app.js"></script>
+ <script src="../assets/leave.js"></script>
+</body>
+</html>
